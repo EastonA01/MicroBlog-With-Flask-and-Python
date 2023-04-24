@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <table>
+        <tr valign="top">
+            <td><img src="{{ user.avatar(128) }}"></td>
+            <td>
+                <h1>User: {{ user.username }}</h1>
+                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+                {% if user.last_seen %}<p>Last seen on: {{ user.last_seen }}</p>{% endif %}
+            </td>
+        </tr>
+    </table>
+    {% if user == current_user %}
+                <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+    {% endif %}
+    <hr>
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+{% endblock %}
+
+<!-- TODO: ADD PROFILE PHOTO UPLOAD AND VALIDATION -->
+<!-- You will need to create a web form with a file field where the user can select a picture to upload. The server will then save the file to disk. You can finally add a route that returns the image, so that you can include it in a <src> element in your page. If you implement something like this, it is important to validate the uploads, you want to make sure they have the expected size (not a huge file that may fill your disk), and also that they are valid jpeg/png/etc files, not something else. -->
