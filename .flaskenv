@@ -2,7 +2,7 @@ FLASK_APP=microblog.py
 
 FLASK_DEBUG=1
 
-MAIL_SERVER=smtp.googlemail.com
+MAIL_SERVER=localhost
 
 MAIL_PORT=587
 
